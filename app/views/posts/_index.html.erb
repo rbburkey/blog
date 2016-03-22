@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-preview">
+          <% @posts.each do |post| %>
+            <a href= "posts/<%=post.id%>">
+                <h2 class="post-title">
+                    <%= post.title %>
+                </h2>
+                <h3 class="post-subtitle">
+                    something will be here
+                </h3>
+            </a>
+            <p class="post-meta">
+            <%= link_to 'Show', post %>
+            <%= link_to 'Edit', edit_post_path(post) %>
+            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+            <hr>
+           <% end %>
+        </div>
+        <%= link_to 'New Post', new_post_path %>
+     </div>
+  </div>
+</div>
+
+<br>
