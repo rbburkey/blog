@@ -19,12 +19,16 @@
             </a>
             <p class="post-meta">
             <%= link_to 'Show', post %>
+            <% if current_user then %>
             <%= link_to 'Edit', edit_post_path(post) %>
             <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+            <% end %>
             <hr>
            <% end %>
         </div>
+        <% if current_user then %>
         <%= link_to 'New Post', new_post_path %>
+        <% end %>
      </div>
   </div>
 </div>

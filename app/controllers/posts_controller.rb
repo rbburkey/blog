@@ -4,9 +4,19 @@ class PostsController < ApplicationController
 
   # GET /posts
   # GET /posts.json
-  def index
-    @posts = Post.all
-  end
+
+
+
+    def index
+  @page = (params[:page] || 1).to_i
+  offset = (@page -1) * 25
+  @posts = Post.
+              order(created_at: :desc).
+              offset(offset).
+              limit(25).
+              all
+end
+
 
   # GET /posts/1
   # GET /posts/1.json
