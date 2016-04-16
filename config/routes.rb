@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   root 'static#welcome'
 
 
-  get 'signup' => 'users#new'
+
+
   delete 'logout' => 'session#destroy'
   get 'login' => 'session#new'
   post 'login' => 'session#create'
