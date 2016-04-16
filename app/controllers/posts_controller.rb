@@ -1,22 +1,12 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, only: [:index]
+  before_action :require_user, only: [:index, :show]
 
   # GET /posts
   # GET /posts.json
-
-
-
-    def index
-  @page = (params[:page] || 1).to_i
-  offset = (@page -1) * 25
-  @posts = Post.
-              order(created_at: :desc).
-              offset(offset).
-              limit(25).
-              all
-end
-
+  def index
+    @posts = Post.all
+  end
 
   # GET /posts/1
   # GET /posts/1.json
@@ -81,6 +71,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :user_id, :image)
+      params.require(:post).permit(:title, :body, :user_id, :image, :date)
     end
 end
